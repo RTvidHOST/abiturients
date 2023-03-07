@@ -92,7 +92,21 @@ public class HelloController implements Initializable {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
-
+        
+        addAb.setOnAction(event -> {
+            addAb.getScene().getWindow().hide();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("addAb.fxml"));
+            try {
+                fxmlLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = fxmlLoader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
+        
         deleteAd.setOnAction(event -> {
             DbHandler dbHandler = new DbHandler();
             dbHandler.deleteAb(family.getText(), name.getText(), dad.getText(), LocalDate.parse(birthday.getText()), form.getText(), att.getText());
